@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Message envoyé - Catalyseur Clients</title>
+    <meta name="description" content="Votre message a bien été envoyé. Réponse sous 24 h ouvrées." />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --bg: #0d0f1a;
+        --bg-card: #141827;
+        --primary: #22c9a8;
+        --primary-dim: #1a9e88;
+        --text: #e8edf5;
+        --text-muted: #8892a8;
+        --border: rgba(255, 255, 255, 0.08);
+        --radius: 10px;
+        --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      }
+
+      body {
+        font-family: var(--font-sans);
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .container {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      main {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        padding: 56px 0;
+      }
+
+      .card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 40px 32px;
+        text-align: center;
+        width: 100%;
+      }
+
+      .check {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: rgba(34, 201, 168, 0.12);
+        border: 1px solid rgba(34, 201, 168, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 22px;
+      }
+
+      .check svg {
+        width: 30px;
+        height: 30px;
+        color: var(--primary);
+      }
+
+      h1 {
+        font-size: clamp(1.6rem, 4vw, 2.1rem);
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+      }
+
+      p {
+        color: var(--text-muted);
+        margin-top: 14px;
+        font-size: 0.95rem;
+      }
+
+      .actions {
+        margin-top: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        padding: 13px 22px;
+        font-size: 0.92rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: #0d0f1a;
+      }
+
+      .btn-primary:hover {
+        background: #2fe0bb;
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--text);
+        border: 1px solid var(--border);
+      }
+
+      .btn-secondary:hover {
+        border-color: rgba(255, 255, 255, 0.22);
+      }
+
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 24px 0;
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="card">
+          <div class="check" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 6L9 17l-5-5" />
+            </svg>
+          </div>
+          <h1>Message bien envoyé</h1>
+          <p>Merci ! Votre message est arrivé. Je vous réponds sous 24 h ouvrées, directement par email.</p>
+          <p>En attendant, vous pouvez réserver un créneau de démo de 20 minutes si votre besoin est urgent.</p>
+          <div class="actions">
+            <a class="btn-primary" href="https://calendly.com/claire_le_gall/demo-customer-success-hub" target="_blank" rel="noopener noreferrer"
+              >Réserver une démo</a
+            >
+            <a class="btn-secondary" href="/">Retour à la landing</a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>Catalyseur Clients - Customer Success Hub &copy; 2026</footer>
+  </body>
+</html>
