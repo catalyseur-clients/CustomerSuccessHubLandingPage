@@ -11,6 +11,9 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="/favicon.ico" />
 
+    <!-- Consentement cookies + Meta Pixel (chargé après accord) -->
+    <script src="/consent.js"></script>
+
     <style>
       *,
       *::before,
@@ -323,8 +326,19 @@
     <footer>
       <div class="container">
         <p>Catalyseur Clients - Customer Success Hub &copy; 2026</p>
-        <p style="margin-top: 6px"><a href="/cgv.html">CGV</a></p>
+        <p style="margin-top: 6px"><a href="/cgv.html">CGV</a> &middot; <a href="#" onclick="window.ccOpen && window.ccOpen(); return false;">Gérer les cookies</a></p>
       </div>
     </footer>
+
+    <!-- Meta Pixel : conversion au clic vers la prise de rendez-vous -->
+    <script>
+      document.querySelectorAll('a[href*="calendly.com"]').forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (typeof fbq === 'function') {
+            fbq('track', 'Lead');
+          }
+        });
+      });
+    </script>
   </body>
 </html>

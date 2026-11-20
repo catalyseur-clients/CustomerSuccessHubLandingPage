@@ -7,6 +7,9 @@
   <meta name="description" content="Votre rendez-vous de démonstration est bien confirmé. Préparez-vous à transformer votre équipe Customer Success.">
   <link rel="icon" href="/favicon.ico">
 
+  <!-- Consentement cookies + Meta Pixel (chargé après accord) -->
+  <script src="/consent.js"></script>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -231,9 +234,16 @@
   <!-- FOOTER -->
   <footer>
     <div class="container" style="max-width: 1120px;">
-      <p>Catalyseur Clients - Customer Success Hub &copy; 2026</p>
+      <p>Catalyseur Clients - Customer Success Hub &copy; 2026 &middot; <a href="#" onclick="window.ccOpen && window.ccOpen(); return false;">Gérer les cookies</a></p>
     </div>
   </footer>
+
+  <!-- Meta Pixel : conversion RDV confirme -->
+  <script>
+    if (typeof fbq === 'function') {
+      fbq('track', 'Schedule');
+    }
+  </script>
 
 </body>
 </html>

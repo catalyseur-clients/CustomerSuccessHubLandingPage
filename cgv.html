@@ -8,6 +8,9 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="/favicon.ico" />
 
+    <!-- Consentement cookies + Meta Pixel (chargé après accord) -->
+    <script src="/consent.js"></script>
+
     <style>
       *,
       *::before,
@@ -305,7 +308,10 @@
     </main>
 
     <footer>
-      <div class="container">Catalyseur Clients - Customer Success Hub &copy; 2026</div>
+      <div class="container">
+        Catalyseur Clients - Customer Success Hub &copy; 2026 &middot;
+        <a href="#" onclick="window.ccOpen && window.ccOpen(); return false;">Gérer les cookies</a>
+      </div>
     </footer>
   </body>
 </html>
