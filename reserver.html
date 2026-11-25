@@ -59,7 +59,7 @@
       overflow: hidden;
       min-height: 700px;
     }
-    #calendly-embed iframe { width: 100% !important; }
+    #calendly-embed iframe { width: 100% !important; display: block; border: 0; }
 
     footer { border-top: 1px solid var(--border); padding: 32px 0; text-align: center; font-size: 0.8rem; color: var(--text-muted); }
     footer a { color: var(--text-muted); }
@@ -100,9 +100,17 @@
       resize: true
     });
 
-    // Redirection vers la page de confirmation une fois la réservation finalisée
+    // Ajuste la hauteur de l'embed selon ce que Calendly annonce, puis redirige une fois reservé
     window.addEventListener('message', function (e) {
       if (e.origin !== 'https://calendly.com' || !e.data) return;
+
+      if (e.data.event === 'calendly.page_height') {
+        var f = document.querySelector('#calendly-embed iframe');
+        if (f && e.data.payload && e.data.payload.height) {
+          f.style.height = e.data.payload.height;
+        }
+      }
+
       if (e.data.event === 'calendly.event_scheduled') {
         window.location.href = '/confirmation.html';
       }
