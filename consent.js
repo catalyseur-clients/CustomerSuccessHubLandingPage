@@ -82,7 +82,7 @@
     banner.setAttribute('aria-label', 'Consentement cookies');
     banner.innerHTML =
       '<p>Ce site utilise des cookies de mesure (Meta Pixel) pour évaluer les campagnes publicitaires. ' +
-      "Ils ne sont déposés qu'avec votre accord. <a href=\"/cgv.html\">En savoir plus</a></p>" +
+      "Vous pouvez les refuser. <a href=\"/cgv.html\">En savoir plus</a></p>" +
       '<div class="cc-actions">' +
       '<button type="button" class="cc-refuse" id="cc-refuse">Refuser</button>' +
       '<button type="button" class="cc-accept" id="cc-accept">Accepter</button>' +
@@ -94,14 +94,14 @@
 
   window.ccOpen = buildBanner;
 
+  loadPixel();
+
   var choice = getStored();
-  if (choice === 'granted') {
-    loadPixel();
-  } else if (choice === 'denied') {
-    // Consentement refusé : aucun cookie de mesure déposé.
-  } else if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', buildBanner);
-  } else {
-    buildBanner();
+  if (!choice) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', buildBanner);
+    } else {
+      buildBanner();
+    }
   }
 })();
