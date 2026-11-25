@@ -170,14 +170,24 @@
       <a href="#" onclick="window.ccOpen && window.ccOpen(); return false;" style="color:#8892a8;">Gérer les cookies</a>
     </footer>
 
-    <!-- Meta Pixel : conversion au clic vers la prise de rendez-vous -->
+    <!-- Calendly : widget popup + redirection vers la page de confirmation (plan gratuit) -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
     <script>
       document.querySelectorAll('a[href*="calendly.com"]').forEach(function (link) {
-        link.addEventListener('click', function () {
-          if (typeof fbq === 'function') {
-            fbq('track', 'Lead');
+        link.addEventListener('click', function (e) {
+          if (typeof fbq === 'function') { fbq('track', 'Lead'); }
+          if (window.Calendly) {
+            e.preventDefault();
+            Calendly.initPopupWidget({ url: link.href });
           }
         });
+      });
+      window.addEventListener('message', function (e) {
+        if (e.origin !== 'https://calendly.com' || !e.data) return;
+        if (e.data.event === 'calendly.event_scheduled') {
+          window.location.href = '/confirmation.html';
+        }
       });
     </script>
   </body>
