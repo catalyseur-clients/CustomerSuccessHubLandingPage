@@ -57,8 +57,9 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       overflow: hidden;
-      min-height: 680px;
+      min-height: 700px;
     }
+    #calendly-embed iframe { width: 100% !important; }
 
     footer { border-top: 1px solid var(--border); padding: 32px 0; text-align: center; font-size: 0.8rem; color: var(--text-muted); }
     footer a { color: var(--text-muted); }
@@ -95,7 +96,8 @@
   <script>
     Calendly.initInlineWidget({
       url: 'https://calendly.com/claire_le_gall/demo-customer-success-hub',
-      parentElement: document.getElementById('calendly-embed')
+      parentElement: document.getElementById('calendly-embed'),
+      resize: true
     });
 
     // Redirection vers la page de confirmation une fois la réservation finalisée
