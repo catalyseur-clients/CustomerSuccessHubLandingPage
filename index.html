@@ -8,8 +8,6 @@
   <meta property="og:title" content="Catalyseur Clients — CSM Hub">
   <meta property="og:description" content="Pilotez vos comptes clients, vos KPI et votre cycle de vie client. La plateforme qui fait gagner vos CSM.">
   <meta property="og:type" content="website">
-  <link rel="preconnect" href="https://assets.calendly.com" crossorigin>
-  <link rel="dns-prefetch" href="https://assets.calendly.com">
   <link rel="icon" href="/favicon.ico">
 
   <!-- Consentement cookies + Meta Pixel (chargé après accord) -->
@@ -211,7 +209,7 @@
         <a href="#features">Fonctionnalités</a>
         <a href="#faq">FAQ</a>
       </div>
-      <a href="https://calendly.com/claire_le_gall/demo-customer-success-hub" target="_blank" rel="noopener noreferrer" class="nav-cta">Demander une demo</a>
+      <a href="/reserver.html" class="nav-cta">Demander une demo</a>
     </div>
   </nav>
 
@@ -222,7 +220,7 @@
       <h1>Vous recrutez votre prochain CSM ?<br>Donnez-lui <span>les moyens de performer</span> dès le jour 1</h1>
       <p>Customer Success Hub est la plateforme tout-en-un qui transforme votre service CSM : pilotage KPI en temps réel, health score automatisé, segmentation clients, business reviews.<br>Tout au service de la rétention des clients.</p>
       <div class="hero-buttons">
-        <a href="https://calendly.com/claire_le_gall/demo-customer-success-hub" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        <a href="/reserver.html" class="btn-primary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12l14 5l-8 7l4 4l-10-4l6 6" stroke="#0d0f1a" stroke-width="2"/></svg>
           Demander une demo
         </a>
@@ -408,11 +406,11 @@
       <h2>Vous créez ou vous faites grandir votre équipe CSM ?<br>On vous met à disposition une plateforme de démo pendant 7 jours.</h2>
       <p class="section-sub">Sans carte bancaire. Sans engagement. Accès complet à toutes les fonctionnalités.</p>
       <div class="cta-buttons">
-        <a href="https://calendly.com/claire_le_gall/demo-customer-success-hub" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        <a href="/reserver.html" class="btn-primary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12l14 5l-8 7l4 4l-10-4l6 6" stroke="#0d0f1a" stroke-width="2"/></svg>
           Demander une demo
         </a>
-        <a href="https://calendly.com/claire_le_gall/demo-customer-success-hub" target="_blank" rel="noopener noreferrer" class="btn-secondary">Réserver un créneau</a>
+        <a href="/reserver.html" class="btn-secondary">Réserver un créneau</a>
       </div>
     </div>
   </section>
@@ -428,30 +426,12 @@
     </div>
   </footer>
 
-  <!-- Calendly : widget popup + redirection vers la page de confirmation (plan gratuit) -->
-  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-  <script src="https://assets.calendly.com/assets/external/widget.js"></script>
+  <!-- Meta Pixel : intention de réservation -->
   <script>
-    function openCalendly(url) {
-      if (window.Calendly) { Calendly.initPopupWidget({ url: url }); return; }
-      var s = document.createElement('script');
-      s.src = 'https://assets.calendly.com/assets/external/widget.js';
-      s.onload = function () { Calendly.initPopupWidget({ url: url }); };
-      document.head.appendChild(s);
-    }
-    document.querySelectorAll('a[href*="calendly.com"]').forEach(function (link) {
-      var url = link.getAttribute('href');
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
+    document.querySelectorAll('a[href="/reserver.html"]').forEach(function (link) {
+      link.addEventListener('click', function () {
         if (typeof fbq === 'function') { fbq('track', 'Lead'); }
-        openCalendly(url);
       });
-    });
-    window.addEventListener('message', function (e) {
-      if (e.origin !== 'https://calendly.com' || !e.data) return;
-      if (e.data.event === 'calendly.event_scheduled') {
-        window.location.href = '/confirmation.html';
-      }
     });
   </script>
 

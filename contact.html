@@ -9,8 +9,6 @@
       content="Une question, un projet Customer Success ou une demande de démo ? Écrivez-nous, réponse sous 24 h ouvrées."
     />
     <meta name="robots" content="noindex" />
-    <link rel="preconnect" href="https://assets.calendly.com" crossorigin />
-    <link rel="dns-prefetch" href="https://assets.calendly.com" />
     <link rel="icon" href="/favicon.ico" />
 
     <!-- Consentement cookies + Meta Pixel (chargé après accord) -->
@@ -317,7 +315,7 @@
           <div style="text-align: center;">
             <p class="page-sub" style="margin: 0 0 24px;">Le plus simple : réservez directement un créneau de démonstration de 20 minutes.</p>
             <!-- Remplace le lien ci-dessous par le lien définitif du site quand il sera prêt -->
-            <a href="https://calendly.com/claire_le_gall/demo-customer-success-hub" target="_blank" rel="noopener noreferrer" class="btn-primary">Demander une démo</a>
+            <a href="/reserver.html" class="btn-primary">Demander une démo</a>
           </div>
 
           
@@ -332,30 +330,12 @@
       </div>
     </footer>
 
-    <!-- Calendly : widget popup + redirection vers la page de confirmation (plan gratuit) -->
-    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-    <script src="https://assets.calendly.com/assets/external/widget.js"></script>
+    <!-- Meta Pixel : intention de réservation -->
     <script>
-      function openCalendly(url) {
-        if (window.Calendly) { Calendly.initPopupWidget({ url: url }); return; }
-        var s = document.createElement('script');
-        s.src = 'https://assets.calendly.com/assets/external/widget.js';
-        s.onload = function () { Calendly.initPopupWidget({ url: url }); };
-        document.head.appendChild(s);
-      }
-      document.querySelectorAll('a[href*="calendly.com"]').forEach(function (link) {
-        var url = link.getAttribute('href');
-        link.addEventListener('click', function (e) {
-          e.preventDefault();
+      document.querySelectorAll('a[href="/reserver.html"]').forEach(function (link) {
+        link.addEventListener('click', function () {
           if (typeof fbq === 'function') { fbq('track', 'Lead'); }
-          openCalendly(url);
         });
-      });
-      window.addEventListener('message', function (e) {
-        if (e.origin !== 'https://calendly.com' || !e.data) return;
-        if (e.data.event === 'calendly.event_scheduled') {
-          window.location.href = '/confirmation.html';
-        }
       });
     </script>
   </body>
